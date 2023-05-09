@@ -1,6 +1,7 @@
 """Generic utility functions."""
 import os
 from typing import Any, Callable, Dict, Optional, Tuple
+from typing import Any
 
 from requests import HTTPError, Response
 
@@ -86,3 +87,7 @@ def serialize_msgs(msgs: list[BaseMessage], include_type=False) -> str:
     return "\n\n".join(
         (f"{msg.type}: {msg.content}" if include_type else msg.content) for msg in msgs
     )
+
+
+def comma_list(items: list[Any]) -> str:
+    return ", ".join(str(item) for item in items)
